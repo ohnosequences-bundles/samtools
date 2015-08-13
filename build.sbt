@@ -1,7 +1,7 @@
 Nice.scalaProject
 
 name := "samtools"
-organization := "ohnosequencesBundles"
+organization := "ohnosequences-bundles"
 description := "A bundle for samtools tool"
 
 publishBucketSuffix := "era7.com"
@@ -13,8 +13,7 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
 	"ohnosequences" %% "statika" % "2.0.0-SNAPSHOT",
-	"ohnosequencesBundles" %% "compressinglibs" % "0.1.0",
-	"ohnosequencesBundles" %% "cdevel" % "0.1.0-SNAPSHOT",
-	"ohnosequencesBundles" %% "ncurses" % "0.1.0-SNAPSHOT",
-  "com.lihaoyi"   %% "ammonite-ops" % "0.2.7"
+	"ohnosequences-bundles" %% "compressinglibs" % "0.1.0",
+	"ohnosequences-bundles" %% "cdevel" % "0.1.0-SNAPSHOT",
+	"ohnosequences-bundles" %% "ncurses" % "0.1.0-SNAPSHOT"
 )
