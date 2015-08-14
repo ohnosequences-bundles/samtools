@@ -1,0 +1,1 @@
+This has an install method that downloads and install Samtools give it is in the correct path in S3
