@@ -1,18 +1,28 @@
 package ohnosequencesBundles.statika
 
 import ohnosequences.statika._, bundles._, instructions._
+import java.io.File
 
 
-abstract class Samtools(val samtoolsVersion: String) extends Bundle(cdevel, compressinglibs, ncurses) {
+abstract class Samtools(val version: String)
+  extends Bundle(cdevel, compressinglibs, ncurses) { samtools =>
 
-  val samtoolsDir = s"samtools-${samtoolsVersion}"
+  val name = "samtools-" + version
+  val tarBz = name + ".tar.bz2"
 
-  final def install: Results = {
+  lazy val download: CmdInstructions = cmd("wget")(
+    s"http://s3-eu-west-1.amazonaws.com/resources.ohnosequences.com/samtools/${version}/${samtools.tarBz}"
+  )
 
-    Seq("wget", s"http://s3-eu-west-1.amazonaws.com/resources.ohnosequences.com/samtools/${samtoolsVersion}/${samtoolsDir}.tar.bz2") -&-
-    Seq("tar", "--bzip2", "-xf", s"${samtoolsDir}.tar.bz2") -&-
-    Seq("make", "-C", samtoolsDir) -&-
-    Seq("cp", s"${samtoolsDir}/samtoolsBinary", "/usr/bin/samtools") ->-
-    success(s"${bundleName} is installed")
-  }
+  lazy val untar: CmdInstructions = cmd("tar")("--bzip2", "-xf", samtools.tarBz)
+
+  lazy val make: CmdInstructions = cmd("make")("-C", samtools.name)
+
+  lazy val link: CmdInstructions = cmd("ln")("-s",
+    new File(s"${samtools.name}/samtoolsBinary").getCanonicalPath,
+    "/usr/bin/samtools"
+  )
+
+  def instructions: AnyInstructions = download -&- untar -&- make -&- link
+
 }

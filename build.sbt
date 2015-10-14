@@ -12,8 +12,8 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-	"ohnosequences"             %% "statika"          % "2.0.0-M3",
-	"ohnosequences-bundles"     %% "compressinglibs"  % "0.2.0",
-	"ohnosequences-bundles"     %% "cdevel"           % "0.2.0",
-	"ohnosequences-bundles"     %% "ncurses"          % "0.2.0"
+	"ohnosequences"         %% "statika"         % "2.0.0-M4",
+  "ohnosequences-bundles" %% "cdevel"          % "0.3.0",
+  "ohnosequences-bundles" %% "compressinglibs" % "0.3.0",
+	"ohnosequences-bundles" %% "ncurses"         % "0.3.0"
 )
