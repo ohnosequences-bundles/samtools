@@ -4,7 +4,7 @@ import ohnosequences.statika._, bundles._, instructions._
 import java.io.File
 
 
-abstract class Samtools(val version: String, cdevel : Cdevel)
+abstract class Samtools(val version: String)
   extends Bundle(cdevel, compressinglibs, ncurses) { samtools =>
 
   val name = "samtools-" + version
