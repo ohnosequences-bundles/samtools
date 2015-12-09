@@ -1,0 +1,1 @@
+This release fixes the issue linking Samtools to the path
