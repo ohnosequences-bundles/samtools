@@ -21,7 +21,7 @@ abstract class Samtools(val version: String)
   lazy val make: CmdInstructions = cmd("make")("-C", samtools.name)
 
   lazy val link: CmdInstructions = cmd("ln")("-s",
-    new File(s"${samtools.name}/samtoolsBinary").getCanonicalPath,
+    new File(s"${samtools.name}/samtools").getCanonicalPath,
     "/usr/bin/samtools"
   )
 
